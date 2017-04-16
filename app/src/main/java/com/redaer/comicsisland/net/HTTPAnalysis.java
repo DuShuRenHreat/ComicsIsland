@@ -2,6 +2,9 @@ package com.redaer.comicsisland.net;
 
 import android.util.Log;
 
+import com.redaer.comicsisland.ItemBeanPresent;
+import com.redaer.comicsisland.bean.ItemBean;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -33,24 +36,22 @@ public class HTTPAnalysis {
         Document document = Jsoup.parse(html);
         Elements elements = document.select(".sdiv");
         for(Element e : elements){
-            Log.e("test","URL: http://m.manhuatai.com" + e.select("a").attr("href"));
+            ItemBeanPresent.toBean(e, ItemBean.class);
+        /*    Log.e("test","URL: http://m.manhuatai.com" + e.select("a").attr("href"));
             Log.e("test","Title: " + e.select("a").attr("title"));
-
             String z = e.select(".wrapright > ul > .type").html();
             String x = e.select(".wrapright > ul > .type > span").toString();
             String zz = z.replace(x,"");
-            Log.e("test","Type: " + zz);
+           Log.e("test","Type: " + zz);
 
             Log.e("test","PicUrl: " + e.select("img").attr("data-url"));
-
             z = e.select(".wrapright > ul > .status").html();
             x = e.select(".wrapright > ul > .status > span").toString();
             zz = z.replace(x,"");
             Log.e("test","State: " + zz);
-
             z = e.select(".wrapright > ul > li").get(3).html();
             Document doc = Jsoup.parse(z);
-            Log.e("test","剧情: " + z.replace(doc.select("span").toString(),"") + "\n  ");
+            Log.e("test","剧情: " + z.replace(doc.select("span").toString(),"") + "\n  ");*/
         }
     }
     public static void getDetails(String html){
